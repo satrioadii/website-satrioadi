@@ -15,6 +15,7 @@ const styles = makeStyles((theme) => {
 		contentTitle: {
 			fontWeight: "500 !important",
 			cursor: "pointer",
+			lineHeight: "1.3",
 		},
 		contentSubtitle: {
 			fontWeight: "400 !important",
@@ -23,11 +24,11 @@ const styles = makeStyles((theme) => {
 	};
 });
 
-const HomeContentCard = ({ Title, Subtitle }) => {
+const HomeContentCard = ({ Title, Subtitle, Detail }) => {
 	const { toggleModalShow, setModalData } = useContext(ModalContext);
 	const classes = styles();
 	const showModal = () => {
-		setModalData({ title: Title, subtitle: Subtitle });
+		setModalData({ title: Title, subtitle: Subtitle, detail: Detail });
 		toggleModalShow();
 	};
 	return (

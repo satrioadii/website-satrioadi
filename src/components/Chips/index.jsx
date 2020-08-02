@@ -16,15 +16,15 @@ export const CustomChip = ({
 	label,
 	color,
 	variant,
-	links,
+	link,
 	commands,
 	newTab,
 }) => {
 	return (
 		<Grid item>
-			{links ? (
+			{link ? (
 				<a
-					href={links}
+					href={link}
 					target={newTab ? "_blank" : undefined}
 					style={{ textDecoration: "none" }}
 				>

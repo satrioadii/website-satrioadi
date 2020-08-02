@@ -1,5 +1,6 @@
 import theme from "../../../../theme";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { ProjectContents } from "../../../../contents/projects";
 
 const { Fragment } = require("react");
 const { useTheme, Box, Typography, Link } = require("@material-ui/core");
@@ -44,10 +45,15 @@ const Navigator = ({ selected, command, total, title, condition }) => {
 
 const HomeNavigation = () => {
 	const theme = useTheme();
+	const [totalProject, setTotalProject] = useState(0);
 	const [navigation, setNavigation] = useState(1);
 	const NavigationHandler = (value) => {
 		setNavigation(value);
 	};
+
+	useEffect(() => {
+		setTotalProject(ProjectContents.length);
+	}, []);
 
 	return (
 		<Fragment>
@@ -69,7 +75,7 @@ const HomeNavigation = () => {
 					<Navigator
 						selected={navigation}
 						command={(number) => NavigationHandler(number)}
-						total={24}
+						total={totalProject}
 						title="projects"
 						condition={1}
 					/>

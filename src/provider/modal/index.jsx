@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 	data: {
 		title: null,
 		subtitle: null,
+		detail: undefined,
 	},
 	toggleModalShow: () => {},
 	setModalData: () => {},

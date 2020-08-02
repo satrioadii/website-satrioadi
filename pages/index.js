@@ -6,6 +6,7 @@ import HomeHeader from "../src/components/page/home/header";
 import HomeNavigation from "../src/components/page/home/navigation";
 import HomeContentCard from "../src/components/page/home/content-card";
 import DialogComponent from "../src/components/Dialog";
+import { ProjectContents } from "../src/contents/projects";
 
 export default function Index(props) {
 	return (
@@ -23,54 +24,16 @@ export default function Index(props) {
 				{/* CONTENT BAR */}
 				<Box marginTop="36px" paddingX="20px">
 					<Grid container spacing={2}>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here2"
-							Subtitle="Project subtitle is here, make sure you see this yeeees2"
-						/>
-						<HomeContentCard
-							Title="Project Title Here3"
-							Subtitle="Project subtitle is here, make sure you see this yeeees3"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
-						<HomeContentCard
-							Title="Project Title Here"
-							Subtitle="Project subtitle is here, make sure you see this yeeees"
-						/>
+						{ProjectContents.map((data, index) => {
+							return (
+								<HomeContentCard
+									key={`ProjectContent${index}`}
+									Title={data.title}
+									Subtitle={data.subtitle}
+									Detail={data.detail}
+								/>
+							);
+						})}
 					</Grid>
 					<DialogComponent />
 				</Box>
