@@ -37,7 +37,7 @@ const DialogComponent = () => {
 				PaperProps={{ className: classes.customShadow }}
 				open={modalShow}
 				onClose={() => toggleModalShow()}
-				scroll="paper"
+				scroll="body"
 				maxWidth="sm"
 			>
 				<DialogTitle>
@@ -67,7 +67,7 @@ const DialogComponent = () => {
 							marginBottom: "16px",
 						}}
 					></div>
-					<Box paddingX="16px">
+					<Box paddingX="8px">
 						{/* Category */}
 						<Box marginBottom="16px">
 							<Chip
