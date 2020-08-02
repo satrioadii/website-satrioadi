@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@material-ui/core": "latest",
+		"@material-ui/icons": "^4.9.1",
 		"clsx": "latest",
 		"next": "latest",
 		"prop-types": "latest",

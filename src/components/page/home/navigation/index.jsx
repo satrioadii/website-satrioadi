@@ -73,7 +73,7 @@ const HomeNavigation = () => {
 						title="projects"
 						condition={1}
 					/>
-					<Navigator
+					{/* <Navigator
 						selected={navigation}
 						command={(number) => setNavigation(number)}
 						total={8}
@@ -86,7 +86,7 @@ const HomeNavigation = () => {
 						total={3}
 						title="organizations"
 						condition={3}
-					/>
+					/> */}
 				</Box>
 			</div>
 		</Fragment>
