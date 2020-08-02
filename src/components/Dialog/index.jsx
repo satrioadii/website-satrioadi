@@ -18,7 +18,7 @@ const { Fragment } = require("react");
 const styles = makeStyles((theme) => {
 	return {
 		customShadow: {
-			boxShadow: "0px 0px 30px 0px rgba(255,255,255,1)",
+			boxShadow: "0px 0px 30px 0px rgba(210,210,210,0.8)",
 			border: `2px solid ${theme.palette.owngray1.main}`,
 		},
 	};

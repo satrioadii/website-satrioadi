@@ -32,7 +32,7 @@ npm install
 then run the server with this command
 
 ```
-npm run serve
+npm run dev
 ```
 
 The development server is started on port 3000.
