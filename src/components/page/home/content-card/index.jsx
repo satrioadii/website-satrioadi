@@ -1,5 +1,4 @@
-import theme from "../../../../theme";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../../../provider/modal";
 
 const {
@@ -25,12 +24,34 @@ const styles = makeStyles((theme) => {
 });
 
 const HomeContentCard = ({ Title, Subtitle, Detail }) => {
-	const { toggleModalShow, setModalData } = useContext(ModalContext);
+	const {
+		toggleModalShow,
+		setModalData,
+		setIsLoading,
+		modalShow,
+		isLoading,
+	} = useContext(ModalContext);
 	const classes = styles();
 	const showModal = () => {
-		setModalData({ title: Title, subtitle: Subtitle, detail: Detail });
 		toggleModalShow();
 	};
+	// USE EFFECT MODAL TRIGGER
+	useEffect(() => {
+		setIsLoading(true);
+		// ASYNC HANDLER
+		const programs = async () => {
+			await setTimeout(() => {
+				setModalData({
+					title: Title,
+					subtitle: Subtitle,
+					detail: Detail,
+				});
+				setIsLoading(false);
+			}, 3000);
+		};
+		// EXECUTE
+		programs();
+	}, [modalShow]);
 	return (
 		<Grid item xs={12} sm={6} md={4} lg={3}>
 			<div

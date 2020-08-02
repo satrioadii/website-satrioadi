@@ -21,15 +21,13 @@ const styles = makeStyles((theme) => {
 	};
 });
 
-const DialogComponent = () => {
+const DialogComponent = ({ type }) => {
 	const classes = styles();
 	const { modalShow, data, toggleModalShow } = useContext(ModalContext);
 	let DetailComponent = undefined;
 
-	if (data.detail) {
-		if (data.detail.type === "project") {
-			DetailComponent = ProjectDialogComponent;
-		}
+	if (type === "project") {
+		DetailComponent = ProjectDialogComponent;
 	}
 
 	return (

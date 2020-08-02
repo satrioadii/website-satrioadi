@@ -3,53 +3,69 @@ import {
 	Chip,
 	CircularProgress,
 	Grid,
-	makeStyles,
 	Typography,
 } from "@material-ui/core";
 import { Fragment, useContext } from "react";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { ModalContext } from "../../../provider/modal";
 import { ChipsContainer, CustomChip } from "../../Chips";
 
-const styles = makeStyles((theme) => {
-	return {
-		customShadow: {
-			boxShadow: "0px 0px 30px 0px rgba(210,210,210,0.8)",
-			border: `2px solid ${theme.palette.owngray1.main}`,
-		},
-	};
-});
-
 const ProjectDialogComponent = () => {
-	const classes = styles();
-	const { modalShow, data, toggleModalShow } = useContext(ModalContext);
+	const { data, isLoading } = useContext(ModalContext);
 	return (
 		<Fragment>
-			<div
-				style={{
-					width: "100%",
-					paddingTop: "75%",
-					backgroundColor: " #C3C8D8",
-					borderRadius: "4px",
-					marginBottom: "16px",
-				}}
-			></div>
+			{isLoading ? (
+				<Skeleton
+					variant="rect"
+					width="100%"
+					style={{
+						borderRadius: "4px",
+						paddingTop: "75%",
+						marginBottom: "16px",
+					}}
+				/>
+			) : (
+				<div
+					style={{
+						width: "100%",
+						paddingTop: "75%",
+						backgroundColor: " #C3C8D8",
+						borderRadius: "4px",
+						marginBottom: "16px",
+					}}
+				></div>
+			)}
+
 			<Box paddingX="8px">
 				{/* Category */}
 				<Box marginBottom="16px">
-					{data.detail ? (
+					{isLoading ? (
+						<Skeleton
+							variant="rect"
+							width="120px"
+							height="32px"
+							style={{ borderRadius: "20px" }}
+						/>
+					) : (
 						<Chip
 							label={data.detail.category}
 							variant="outlined"
 							color="primary"
 						/>
-					) : (
-						<CircularProgress />
 					)}
 				</Box>
 				{/* Description */}
 				<Box marginBottom="16px">
 					<Typography component="p">
-						{data.detail ? data.detail.description : <CircularProgress />}
+						{isLoading ? (
+							<Fragment>
+								<Skeleton variant="text" />
+								<Skeleton variant="text" />
+								<Skeleton variant="text" />
+							</Fragment>
+						) : (
+							data.detail.description
+						)}
 					</Typography>
 				</Box>
 				<Grid container spacing={3}>
@@ -60,18 +76,32 @@ const ProjectDialogComponent = () => {
 								Project For
 							</Typography>
 							{/* Project Image */}
-							<div
-								style={{
-									width: "100%",
-									marginTop: "8px",
-									paddingBottom: "75%",
-									backgroundImage: data.detail ? data.detail.projectImg : null,
-									backgroundSize: "cover",
-									backgroundRepeat: "none",
-									backgroundPosition: "center",
-									borderRadius: "8px",
-								}}
-							/>
+							{isLoading ? (
+								<Skeleton
+									variant="rect"
+									width="100%"
+									style={{
+										paddingBottom: "75%",
+										marginTop: "8px",
+										borderRadius: "8px",
+									}}
+								/>
+							) : (
+								<div
+									style={{
+										width: "100%",
+										marginTop: "8px",
+										paddingBottom: "75%",
+										backgroundImage: data.detail
+											? data.detail.projectImg
+											: null,
+										backgroundSize: "cover",
+										backgroundRepeat: "none",
+										backgroundPosition: "center",
+										borderRadius: "8px",
+									}}
+								/>
+							)}
 						</Box>
 					</Grid>
 					{/* Tools */}
@@ -83,18 +113,27 @@ const ProjectDialogComponent = () => {
 								</Typography>
 							</Box>
 							<ChipsContainer>
-								{data.detail ? (
-									data.detail.tools.map((dataTool, index) => {
-										return (
-											<CustomChip
-												key={`toolsProject${data.title}-${index}`}
-												{...dataTool}
-											/>
-										);
-									})
-								) : (
-									<CircularProgress />
-								)}
+								{isLoading
+									? [0, 1, 2, 3, 4].map((data, index) => {
+											return (
+												<Grid item key={`SkeletonTools${index}`}>
+													<Skeleton
+														variant="rect"
+														width="90px"
+														height="32px"
+														style={{ borderRadius: "20px" }}
+													/>
+												</Grid>
+											);
+									  })
+									: data.detail.tools.map((dataTool, index) => {
+											return (
+												<CustomChip
+													key={`toolsProject${data.title}-${index}`}
+													{...dataTool}
+												/>
+											);
+									  })}
 							</ChipsContainer>
 						</Box>
 					</Grid>
@@ -107,7 +146,14 @@ const ProjectDialogComponent = () => {
 						</Typography>
 					</Box>
 					<ChipsContainer>
-						{data.detail ? (
+						{isLoading ? (
+							<Skeleton
+								variant="rect"
+								width="90px"
+								height="32px"
+								style={{ borderRadius: "20px" }}
+							/>
+						) : (
 							data.detail.links.map((dataLink, index) => {
 								return (
 									<CustomChip
@@ -116,8 +162,6 @@ const ProjectDialogComponent = () => {
 									/>
 								);
 							})
-						) : (
-							<CircularProgress />
 						)}
 					</ChipsContainer>
 				</div>

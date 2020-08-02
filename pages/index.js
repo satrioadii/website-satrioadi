@@ -35,7 +35,7 @@ export default function Index(props) {
 							);
 						})}
 					</Grid>
-					<DialogComponent />
+					<DialogComponent type="project" />
 				</Box>
 			</Container>
 		</Fragment>
