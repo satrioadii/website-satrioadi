@@ -7,6 +7,7 @@ import HomeNavigation from "../src/components/page/home/navigation";
 import HomeContentCard from "../src/components/page/home/content-card";
 import DialogComponent from "../src/components/Dialog";
 import { ProjectContents } from "../src/contents/projects";
+import CustomFooter from "../src/components/Footer";
 
 export default function Index(props) {
 	return (
@@ -38,6 +39,7 @@ export default function Index(props) {
 					<DialogComponent type="project" />
 				</Box>
 			</Container>
+			<CustomFooter />
 		</Fragment>
 	);
 }

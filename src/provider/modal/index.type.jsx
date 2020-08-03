@@ -1,0 +1,10 @@
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";
+
+export const GET_LIST_REQUEST = "GET_LIST_REQUEST";
+export const GET_LIST_SUCCESS = "GET_LIST_SUCCESS";
+export const GET_LIST_FAIL = "GET_LIST_FAIL";
+
+export const GET_DETAIL_REQUEST = "GET_DETAIL_REQUEST";
+export const GET_DETAIL_SUCCESS = "GET_DETAIL_SUCCESS";
+export const GET_DETAIL_FAIL = "GET_DETAIL_FAIL";

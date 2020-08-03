@@ -9,7 +9,8 @@ import {
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { Fragment, useContext } from "react";
-import { ModalContext } from "../../provider/modal";
+import { ModalContextDispatch, ModalContextState } from "../../provider/modal";
+import { HideDialogAction } from "../../actions/modal/index";
 import ProjectDialogComponent from "./ProjectDialog";
 
 const styles = makeStyles((theme) => {
@@ -23,20 +24,20 @@ const styles = makeStyles((theme) => {
 
 const DialogComponent = ({ type }) => {
 	const classes = styles();
-	const { modalShow, data, toggleModalShow } = useContext(ModalContext);
+	const dispatch = useContext(ModalContextDispatch);
+	const state = useContext(ModalContextState);
+	const { modalShow, dataList } = state;
 	let DetailComponent = undefined;
-
 	if (type === "project") {
 		DetailComponent = ProjectDialogComponent;
 	}
-
 	return (
 		<Fragment>
 			<Dialog
 				BackdropProps={{ style: { backgroundColor: "rgba(250,250,250,0.6)" } }}
 				PaperProps={{ className: classes.customShadow }}
 				open={modalShow}
-				onClose={() => toggleModalShow()}
+				onClose={() => HideDialogAction(dispatch)}
 				scroll="body"
 				maxWidth="sm"
 			>
@@ -46,19 +47,19 @@ const DialogComponent = ({ type }) => {
 							{/* Title */}
 							<Typography variant="h6" component="h3" color="primary">
 								{" "}
-								{data.title}
+								{dataList[0].title}
 							</Typography>
 						</Box>{" "}
 						<Box>
 							<CloseIcon
 								style={{ cursor: "pointer", fontSize: "28px" }}
-								onClick={() => toggleModalShow()}
+								onClick={() => HideDialogAction(dispatch)}
 							/>
 						</Box>
 					</Box>
 				</DialogTitle>
 				<DialogContent>
-					{data.detail ? <DetailComponent /> : null}
+					<DetailComponent />
 				</DialogContent>
 				<DialogActions></DialogActions>
 			</Dialog>

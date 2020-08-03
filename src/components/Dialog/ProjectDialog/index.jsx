@@ -7,11 +7,12 @@ import {
 } from "@material-ui/core";
 import { Fragment, useContext } from "react";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { ModalContext } from "../../../provider/modal";
+import { ModalContextState } from "../../../provider/modal";
 import { ChipsContainer, CustomChip } from "../../Chips";
 
 const ProjectDialogComponent = () => {
-	const { data, isLoading } = useContext(ModalContext);
+	const state = useContext(ModalContextState);
+	const { dataDetail, isLoading, dataList } = state;
 	return (
 		<Fragment>
 			{isLoading ? (
@@ -48,7 +49,7 @@ const ProjectDialogComponent = () => {
 						/>
 					) : (
 						<Chip
-							label={data.detail.category}
+							label={dataDetail.category}
 							variant="outlined"
 							color="primary"
 						/>
@@ -64,7 +65,7 @@ const ProjectDialogComponent = () => {
 								<Skeleton variant="text" />
 							</Fragment>
 						) : (
-							data.detail.description
+							dataDetail.description
 						)}
 					</Typography>
 				</Box>
@@ -92,9 +93,7 @@ const ProjectDialogComponent = () => {
 										width: "100%",
 										marginTop: "8px",
 										paddingBottom: "75%",
-										backgroundImage: data.detail
-											? data.detail.projectImg
-											: null,
+										backgroundImage: dataDetail ? dataDetail.projectImg : null,
 										backgroundSize: "cover",
 										backgroundRepeat: "none",
 										backgroundPosition: "center",
@@ -126,10 +125,10 @@ const ProjectDialogComponent = () => {
 												</Grid>
 											);
 									  })
-									: data.detail.tools.map((dataTool, index) => {
+									: dataDetail.tools.map((dataTool, index) => {
 											return (
 												<CustomChip
-													key={`toolsProject${data.title}-${index}`}
+													key={`toolsProject${dataList[0].title}-${index}`}
 													{...dataTool}
 												/>
 											);
@@ -154,10 +153,10 @@ const ProjectDialogComponent = () => {
 								style={{ borderRadius: "20px" }}
 							/>
 						) : (
-							data.detail.links.map((dataLink, index) => {
+							dataDetail.links.map((dataLink, index) => {
 								return (
 									<CustomChip
-										key={`linkProject${data.title}-${index}`}
+										key={`linkProject${dataList[0].title}-${index}`}
 										{...dataLink}
 									/>
 								);

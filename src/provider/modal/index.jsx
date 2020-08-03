@@ -1,42 +1,45 @@
-import { useState, createContext, useEffect } from "react";
+import {
+	useState,
+	createContext,
+	useEffect,
+	useContext,
+	useReducer,
+} from "react";
+import ModalReducer from "./index.reducer";
 
 const INITIAL_STATE = {
 	modalShow: false,
-	data: {
-		title: null,
-		subtitle: null,
-		detail: undefined,
+	dataList: [{ title: null, subtitle: null }],
+	dataDetail: {
+		category: null,
+		tools: [],
+		links: [],
+		description: null,
+		projectImg: null,
 	},
-	isLoading: false,
-	toggleModalShow: () => {},
-	setModalData: () => {},
-	setIsLoading: () => {},
+	isLoading: true,
 };
 
-export const ModalContext = createContext(INITIAL_STATE);
+export const ModalContextState = createContext();
+export const ModalContextDispatch = createContext();
 
 const ModalContextProvider = ({ children }) => {
-	const [modalState, setModalState] = useState(INITIAL_STATE.modalShow);
-	const [dataState, setDataState] = useState(INITIAL_STATE.data);
-	const [isLoading, setIsLoading] = useState(INITIAL_STATE.isLoading);
-
-	const toggleModalShow = () => setModalState(!modalState);
-	const setModalData = (data) => setDataState({ ...data });
+	const [state, dispatch] = useReducer(ModalReducer, INITIAL_STATE);
 
 	return (
-		<ModalContext.Provider
-			value={{
-				modalShow: modalState,
-				data: dataState,
-				isLoading: isLoading,
-				toggleModalShow,
-				setModalData,
-				setIsLoading,
-			}}
-		>
-			{children}
-		</ModalContext.Provider>
+		<ModalContextDispatch.Provider value={dispatch}>
+			<ModalContextState.Provider value={state}>
+				{children}
+			</ModalContextState.Provider>
+		</ModalContextDispatch.Provider>
 	);
+};
+
+export const ModalContext = () => {
+	const ModalDispatch = useContext(ModalDispatch);
+	const ModalState = useContext(ModalContextState);
+
+	return [ModalState, ModalDispatch];
 };
 
 export default ModalContextProvider;

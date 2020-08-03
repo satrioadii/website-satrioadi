@@ -1,5 +1,14 @@
-import { useContext, useEffect } from "react";
-import { ModalContext } from "../../../../provider/modal";
+import { useContext } from "react";
+import {
+	ShowDialogAction,
+	GetListData,
+	GetDetailData,
+} from "../../../../actions/modal/index";
+import { ModalContextDispatch } from "../../../../provider/modal";
+import {
+	GET_DETAIL_REQUEST,
+	GET_LIST_REQUEST,
+} from "../../../../provider/modal/index.type";
 
 const {
 	Grid,
@@ -24,34 +33,14 @@ const styles = makeStyles((theme) => {
 });
 
 const HomeContentCard = ({ Title, Subtitle, Detail }) => {
-	const {
-		toggleModalShow,
-		setModalData,
-		setIsLoading,
-		modalShow,
-		isLoading,
-	} = useContext(ModalContext);
 	const classes = styles();
+	const dispatch = useContext(ModalContextDispatch);
 	const showModal = () => {
-		toggleModalShow();
+		GetListData(dispatch, Title, Subtitle);
+		ShowDialogAction(dispatch);
+		GetDetailData(dispatch);
 	};
-	// USE EFFECT MODAL TRIGGER
-	useEffect(() => {
-		setIsLoading(true);
-		// ASYNC HANDLER
-		const programs = async () => {
-			await setTimeout(() => {
-				setModalData({
-					title: Title,
-					subtitle: Subtitle,
-					detail: Detail,
-				});
-				setIsLoading(false);
-			}, 3000);
-		};
-		// EXECUTE
-		programs();
-	}, [modalShow]);
+
 	return (
 		<Grid item xs={12} sm={6} md={4} lg={3}>
 			<div

@@ -38,6 +38,12 @@ export const ProjectContents = [
 					variant: "outlined",
 				},
 				{
+					label: "useReducer",
+					color: "secondary",
+					link: "https://reactjs.org/docs/hooks-reference.html#usereducer",
+					variant: "outlined",
+				},
+				{
 					label: "Nginx",
 					color: "secondary",
 					link: "https://www.nginx.com/",
