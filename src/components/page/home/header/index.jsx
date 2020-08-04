@@ -52,7 +52,7 @@ const HomeHeader = () => {
 						<Box marginTop="12px">
 							<Typography variant="h3" component="h1">
 								<strong style={{ fontWeight: "500" }}>
-									Fullstack Developer
+									Full Stack Developer
 								</strong>
 							</Typography>
 						</Box>
