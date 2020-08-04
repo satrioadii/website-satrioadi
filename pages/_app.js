@@ -21,14 +21,14 @@ export default function MyApp(props) {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>Satrio Adi - Profesional Fullstack Developer</title>
+				<title>Satrio Adi - A Professional Full Stack Developer</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
 				<meta
 					name="description"
-					content="Give your businesses chances to go global with me, A professional full stack developer who love his works and likes to solve problems through technology."
+					content="Make your business online and get more customers with me, A professional full stack developer who love his works and likes to give solutions with technology."
 				/>
 			</Head>
 			<ModalContextProvider>

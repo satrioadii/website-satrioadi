@@ -59,10 +59,9 @@ const HomeHeader = () => {
 						<Box marginTop="12px">
 							<Typography variant="h6" color="textSecondary" component="h2">
 								<strong style={{ fontWeight: "400" }}>
-									Give your businesses chances to go global with me, A
+									Make your business online and get more customers with me, A
 									professional full stack developer who love his works and likes
-									to solve problems through technology. <br />
-									Based on Surabaya, Indonesia.
+									to give solutions with technology.
 								</strong>
 							</Typography>
 						</Box>
