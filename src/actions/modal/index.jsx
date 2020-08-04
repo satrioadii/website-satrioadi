@@ -34,5 +34,5 @@ export const GetDetailData = (dispatch) => {
 	dispatch({ type: GET_DETAIL_REQUEST });
 	setTimeout(() => {
 		dispatch({ type: GET_DETAIL_SUCCESS, payload: ProjectContents[0].detail });
-	}, 2000);
+	}, 1000);
 };

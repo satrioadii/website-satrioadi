@@ -23,7 +23,6 @@ const styles = makeStyles((theme) => {
 });
 
 const HomeContentCard = ({ Title, Subtitle, ProjectImage }) => {
-	console.log(ProjectImage);
 	const classes = styles();
 	const dispatch = useContext(ModalContextDispatch);
 	const showModal = () => {

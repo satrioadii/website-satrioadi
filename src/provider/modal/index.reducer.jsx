@@ -18,8 +18,6 @@ const ModalReducer = (state, action) => {
 		case GET_LIST_REQUEST:
 			return { ...state, isLoading: true };
 		case GET_LIST_SUCCESS:
-			console.log("SUCCESS:");
-			console.log(action);
 			return { ...state, isLoading: false, dataList: action.payload };
 		case GET_LIST_FAIL:
 			return { ...state, isLoading: false, error: action.payload };
