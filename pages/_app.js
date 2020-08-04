@@ -30,6 +30,7 @@ export default function MyApp(props) {
 					name="description"
 					content="Make your business online and get more customers with me, A professional full stack developer who love his works and likes to give solutions with technology."
 				/>
+				<link rel="canonical" href="https://satrioadi.com" />
 			</Head>
 			<ModalContextProvider>
 				<ThemeProvider theme={theme}>
