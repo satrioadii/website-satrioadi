@@ -3,6 +3,7 @@ export const ProjectContents = [
 		title: "Website for My Personal Brand",
 		subtitle:
 			"My own website build using Next JS and Material UI with Context API as state management",
+		imageProject: "url('./img-project/project-1-overview.webp')",
 		detail: {
 			type: "project",
 			category: "Web Development",
@@ -17,7 +18,8 @@ export const ProjectContents = [
 					Compute Engine from Google Cloud.
 				</span>
 			),
-			projectImg: "url('./img-project/logo-dribbble.jpg')",
+			imgProjectModal: 'url("./img-project/project-1-modal.webp")',
+			imgOrganization: "url('./img-organization/logo-satrioadi.webp')",
 			tools: [
 				{
 					label: "Next JS",

@@ -1,13 +1,13 @@
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import React, { Fragment } from "react";
 import AppbarComponent from "../src/components/Appbar";
+import DialogComponent from "../src/components/Dialog";
+import CustomFooter from "../src/components/Footer";
+import HomeContentCard from "../src/components/page/home/content-card";
 import HomeHeader from "../src/components/page/home/header";
 import HomeNavigation from "../src/components/page/home/navigation";
-import HomeContentCard from "../src/components/page/home/content-card";
-import DialogComponent from "../src/components/Dialog";
 import { ProjectContents } from "../src/contents/projects";
-import CustomFooter from "../src/components/Footer";
 
 export default function Index(props) {
 	return (
@@ -31,7 +31,7 @@ export default function Index(props) {
 									key={`ProjectContent${index}`}
 									Title={data.title}
 									Subtitle={data.subtitle}
-									Detail={data.detail}
+									ProjectImage={data.imageProject}
 								/>
 							);
 						})}

@@ -42,6 +42,9 @@ const AppbarComponent = () => {
 									height: "40px",
 									borderRadius: "8px",
 									backgroundColor: "#B6BBCC",
+									backgroundImage: "url('./img-head/apple-touch-icon.png')",
+									backgroundPosition: "center",
+									backgroundSize: "cover",
 								}}
 							></div>
 						</IconButton>
@@ -54,14 +57,16 @@ const AppbarComponent = () => {
 							</Link>
 						</a>
 						<Box marginLeft="auto">
-							<Button
-								color="primary"
-								variant="contained"
-								size="medium"
-								style={{ boxShadow: "none" }}
-							>
-								Let's Talk
-							</Button>
+							<a href="#" style={{ textDecoration: "none" }}>
+								<Button
+									color="primary"
+									variant="contained"
+									size="medium"
+									style={{ boxShadow: "none" }}
+								>
+									Let's Talk
+								</Button>
+							</a>
 						</Box>
 					</Toolbar>
 				</Container>

@@ -31,8 +31,11 @@ const ProjectDialogComponent = () => {
 						width: "100%",
 						paddingTop: "75%",
 						backgroundColor: " #C3C8D8",
+						backgroundImage: dataDetail ? dataDetail.imgProjectModal : null,
 						borderRadius: "4px",
 						marginBottom: "16px",
+						backgroundSize: "cover",
+						backgroundPosition: "center",
 					}}
 				></div>
 			)}
@@ -93,7 +96,9 @@ const ProjectDialogComponent = () => {
 										width: "100%",
 										marginTop: "8px",
 										paddingBottom: "75%",
-										backgroundImage: dataDetail ? dataDetail.projectImg : null,
+										backgroundImage: dataDetail
+											? dataDetail.imgOrganization
+											: null,
 										backgroundSize: "cover",
 										backgroundRepeat: "none",
 										backgroundPosition: "center",

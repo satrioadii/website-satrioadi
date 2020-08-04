@@ -76,13 +76,15 @@ const HomeHeader = () => {
 							</Typography>
 						</Box>
 						<Box marginTop="20px">
-							<Button
-								color="primary"
-								variant="contained"
-								style={{ boxShadow: "none" }}
-							>
-								Let's Talk
-							</Button>
+							<a href="#" style={{ textDecoration: "none" }}>
+								<Button
+									color="primary"
+									variant="contained"
+									style={{ boxShadow: "none" }}
+								>
+									Let's Talk
+								</Button>
+							</a>
 						</Box>
 					</Box>
 					{/* DESCRIPTION */}

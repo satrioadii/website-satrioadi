@@ -18,15 +18,27 @@ const CustomFooter = () => {
 		<Fragment>
 			<div className={classes.footerContainer}>
 				<Container maxWidth="lg">
-					<Box paddingX="20px">
-						<Typography
-							component="p"
-							variant="h5"
-							style={{ fontWeight: "400" }}
-							color="textPrimary"
-						>
-							satrioadi.com
-						</Typography>
+					<Box display="flex">
+						<Box paddingX="20px">
+							<Typography
+								component="p"
+								variant="h5"
+								style={{ fontWeight: "400" }}
+								color="textPrimary"
+							>
+								satrioadi.com
+							</Typography>
+						</Box>
+						<Box paddingX="20px" marginLeft="auto">
+							<Typography
+								component="p"
+								variant="h5"
+								style={{ fontWeight: "400" }}
+								color="textSecondary"
+							>
+								@2020
+							</Typography>
+						</Box>
 					</Box>
 				</Container>
 			</div>

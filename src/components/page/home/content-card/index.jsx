@@ -1,22 +1,12 @@
 import { useContext } from "react";
 import {
-	ShowDialogAction,
-	GetListData,
 	GetDetailData,
+	GetListData,
+	ShowDialogAction,
 } from "../../../../actions/modal/index";
 import { ModalContextDispatch } from "../../../../provider/modal";
-import {
-	GET_DETAIL_REQUEST,
-	GET_LIST_REQUEST,
-} from "../../../../provider/modal/index.type";
 
-const {
-	Grid,
-	Typography,
-	Box,
-	makeStyles,
-	Button,
-} = require("@material-ui/core");
+const { Grid, Typography, Box, makeStyles } = require("@material-ui/core");
 
 const styles = makeStyles((theme) => {
 	return {
@@ -32,7 +22,8 @@ const styles = makeStyles((theme) => {
 	};
 });
 
-const HomeContentCard = ({ Title, Subtitle, Detail }) => {
+const HomeContentCard = ({ Title, Subtitle, ProjectImage }) => {
+	console.log(ProjectImage);
 	const classes = styles();
 	const dispatch = useContext(ModalContextDispatch);
 	const showModal = () => {
@@ -49,8 +40,10 @@ const HomeContentCard = ({ Title, Subtitle, Detail }) => {
 					width: "100%",
 					paddingTop: "133%",
 					backgroundColor: " #C3C8D8",
-					borderRadius: "4px",
+					borderRadius: "16px",
 					cursor: "pointer",
+					backgroundImage: ProjectImage,
+					backgroundSize: "cover",
 				}}
 			></div>
 			<Box paddingX="4px">
