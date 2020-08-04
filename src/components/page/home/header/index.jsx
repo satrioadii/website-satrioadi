@@ -26,7 +26,7 @@ const HomeHeader = () => {
 							width: "80px",
 							height: "80px",
 							borderRadius: "40px",
-							backgroundImage: "url('./img-home/ava-satrio.png')",
+							backgroundImage: "url('./img-home/ava-satrio.webp')",
 							backgroundPosition: "center",
 							backgroundSize: "contain",
 							backgroundColor: "#ffffff00",
@@ -59,8 +59,10 @@ const HomeHeader = () => {
 						<Box marginTop="12px">
 							<Typography variant="h6" color="textSecondary" component="h2">
 								<strong style={{ fontWeight: "400" }}>
-									A super passionate professional developer which really love
-									his works and likes to solve problems through technology.
+									Give your businesses chances to go global with me, A
+									professional full stack developer who love his works and likes
+									to solve problems through technology. <br />
+									Based on Surabaya, Indonesia.
 								</strong>
 							</Typography>
 						</Box>

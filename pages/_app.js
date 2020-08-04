@@ -26,6 +26,10 @@ export default function MyApp(props) {
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
+				<meta
+					name="description"
+					content="Give your businesses chances to go global with me, A professional full stack developer who love his works and likes to solve problems through technology."
+				/>
 			</Head>
 			<ModalContextProvider>
 				<ThemeProvider theme={theme}>
