@@ -6,6 +6,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import "../src/assets/css/scrollbarSet.css";
 import ModalContextProvider from "../src/provider/modal";
+import {
+	GoogleTagComponent,
+	GoogleTagComponentNoScript,
+} from "../src/components/Tracking/GoogleTag";
 
 export default function MyApp(props) {
 	const { Component, pageProps } = props;
@@ -31,7 +35,9 @@ export default function MyApp(props) {
 					content="Make your business online and get more customers with me, A professional full stack developer who love his works and likes to give solutions with technology."
 				/>
 				<link rel="canonical" href="https://satrioadi.com" />
+				<GoogleTagComponent />
 			</Head>
+			<GoogleTagComponentNoScript />
 			<ModalContextProvider>
 				<ThemeProvider theme={theme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
