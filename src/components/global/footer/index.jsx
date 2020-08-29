@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-const { Container, makeStyles, Typography, Box } = require("@material-ui/core");
+import { Container, makeStyles, Typography, Box } from "@material-ui/core";
 
 const styles = makeStyles((theme) => {
 	return {

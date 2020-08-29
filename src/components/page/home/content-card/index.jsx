@@ -1,12 +1,11 @@
+import React from "react";
+import { makeStyles, Grid, Typography, Box } from "@material-ui/core";
+import { OpenDialogAction } from "../../../../actions/dialog";
 import { useContext } from "react";
-import {
-	GetDetailData,
-	GetListData,
-	ShowDialogAction,
-} from "../../../../actions/modal/index";
-import { ModalContextDispatch } from "../../../../provider/modal";
-
-const { Grid, Typography, Box, makeStyles } = require("@material-ui/core");
+import { DialogContextDispatch } from "../../../../providers/dialog";
+import { FetchDetailProject } from "../../../../actions/home";
+import { LandingPageContextDispatch } from "../../../../providers/landingpage";
+import ProjectDialogContent from "../project-dialog-content";
 
 const styles = makeStyles((theme) => {
 	return {
@@ -22,33 +21,39 @@ const styles = makeStyles((theme) => {
 	};
 });
 
-const HomeContentCard = ({ Title, Subtitle, ProjectImage }) => {
+const HomeContentCard = ({ Title, Subtitle, ProjectImage, Id }) => {
+	const dispatch = {
+		dialog: useContext(DialogContextDispatch),
+		landingPage: useContext(LandingPageContextDispatch),
+	};
 	const classes = styles();
-	const dispatch = useContext(ModalContextDispatch);
-	const showModal = () => {
-		GetListData(dispatch, Title, Subtitle);
-		ShowDialogAction(dispatch);
-		GetDetailData(dispatch);
+
+	const fileServerAPI = process.env.NEXT_PUBLIC_FILE_SERVER_API;
+
+	const onOpenDialogHandler = () => {
+		OpenDialogAction(dispatch, Title, ProjectDialogContent);
+		FetchDetailProject(dispatch, Id);
 	};
 
 	return (
 		<Grid item xs={12} sm={6} md={4} lg={3}>
 			<div
-				onClick={() => showModal()}
+				onClick={() => onOpenDialogHandler()}
 				style={{
 					width: "100%",
 					paddingTop: "133%",
 					backgroundColor: " #C3C8D8",
 					borderRadius: "16px",
 					cursor: "pointer",
-					backgroundImage: ProjectImage,
+					backgroundImage: `url("${fileServerAPI}/${ProjectImage}")`,
 					backgroundSize: "cover",
+					position: "relative",
 				}}
 			></div>
 			<Box paddingX="4px">
 				<Box marginTop="8px" marginBottom="4px">
 					<Typography
-						onClick={() => showModal()}
+						onClick={() => onOpenDialogHandler()}
 						variant="h6"
 						component="p"
 						className={classes.contentTitle}
@@ -57,7 +62,7 @@ const HomeContentCard = ({ Title, Subtitle, ProjectImage }) => {
 					</Typography>
 				</Box>
 				<Typography
-					onClick={() => showModal()}
+					onClick={() => onOpenDialogHandler()}
 					component="p"
 					color="textSecondary"
 					className={classes.contentSubtitle}

@@ -1,3 +1,4 @@
+import React, { Fragment } from "react";
 import {
 	Box,
 	Dialog,
@@ -6,12 +7,19 @@ import {
 	DialogTitle,
 	makeStyles,
 	Typography,
+	Slide,
 } from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import { Fragment, useContext } from "react";
-import { ModalContextDispatch, ModalContextState } from "../../provider/modal";
-import { HideDialogAction } from "../../actions/modal/index";
-import ProjectDialogComponent from "./ProjectDialog";
+import { Close } from "@material-ui/icons";
+import { useContext } from "react";
+import {
+	DialogContextState,
+	DialogContextDispatch,
+} from "../../../providers/dialog";
+import { CloseDialogAction } from "../../../actions/dialog";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+	return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const styles = makeStyles((theme) => {
 	return {
@@ -22,44 +30,44 @@ const styles = makeStyles((theme) => {
 	};
 });
 
-const DialogComponent = ({ type }) => {
+const GlobalDialog = () => {
+	const dispatch = { dialog: useContext(DialogContextDispatch) };
+	const state = { dialog: useContext(DialogContextState) };
+	const { isOpen, title, DialogComponent } = state.dialog;
 	const classes = styles();
-	const dispatch = useContext(ModalContextDispatch);
-	const state = useContext(ModalContextState);
-	const { modalShow, dataList } = state;
-	let DetailComponent = undefined;
-	if (type === "project") {
-		DetailComponent = ProjectDialogComponent;
-	}
+	const onCloseDialog = () => {
+		CloseDialogAction(dispatch);
+	};
+
 	return (
 		<Fragment>
 			<Dialog
 				BackdropProps={{ style: { backgroundColor: "rgba(250,250,250,0.6)" } }}
 				PaperProps={{ className: classes.customShadow }}
-				open={modalShow}
-				onClose={() => HideDialogAction(dispatch)}
+				open={isOpen}
+				onClose={() => onCloseDialog()}
 				scroll="body"
 				maxWidth="sm"
+				TransitionComponent={Transition}
 			>
 				<DialogTitle>
 					<Box display="flex">
 						<Box flexGrow={1}>
 							{/* Title */}
 							<Typography variant="h6" component="h3" color="primary">
-								{" "}
-								{dataList[0].title}
+								{title}
 							</Typography>
 						</Box>{" "}
 						<Box>
-							<CloseIcon
+							<Close
 								style={{ cursor: "pointer", fontSize: "28px" }}
-								onClick={() => HideDialogAction(dispatch)}
+								onClick={() => onCloseDialog()}
 							/>
 						</Box>
 					</Box>
 				</DialogTitle>
 				<DialogContent>
-					<DetailComponent />
+					{DialogComponent ? <DialogComponent /> : null}
 				</DialogContent>
 				<DialogActions></DialogActions>
 			</Dialog>
@@ -67,4 +75,4 @@ const DialogComponent = ({ type }) => {
 	);
 };
 
-export default DialogComponent;
+export default GlobalDialog;

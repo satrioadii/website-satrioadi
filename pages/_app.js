@@ -5,11 +5,12 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import "../src/assets/css/scrollbarSet.css";
-import ModalContextProvider from "../src/provider/modal";
+import IndexGlobalProvider from "../src/providers";
+import GlobalSnackbar from "../src/components/global/snackbar";
 import {
 	GoogleTagComponent,
 	GoogleTagComponentNoScript,
-} from "../src/components/Tracking/GoogleTag";
+} from "../src/components/global/tracking/GoogleTag";
 
 export default function MyApp(props) {
 	const { Component, pageProps } = props;
@@ -38,13 +39,14 @@ export default function MyApp(props) {
 				<GoogleTagComponent />
 			</Head>
 			<GoogleTagComponentNoScript />
-			<ModalContextProvider>
+			<IndexGlobalProvider>
 				<ThemeProvider theme={theme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
+					<GlobalSnackbar />
 					<Component {...pageProps} />
 				</ThemeProvider>
-			</ModalContextProvider>
+			</IndexGlobalProvider>
 		</React.Fragment>
 	);
 }
