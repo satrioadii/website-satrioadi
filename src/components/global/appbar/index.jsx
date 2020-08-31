@@ -57,7 +57,10 @@ const AppbarComponent = () => {
 							</Link>
 						</a>
 						<Box marginLeft="auto">
-							<a href="#" style={{ textDecoration: "none" }}>
+							<a
+								href="https://link.satrioadi.com"
+								style={{ textDecoration: "none" }}
+							>
 								<Button
 									color="primary"
 									variant="contained"
