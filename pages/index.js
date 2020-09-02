@@ -47,7 +47,6 @@ export default function Index(props) {
 						{/* PROJECT CARD */}
 						{data.length > 0 ? (
 							data.map((data, index) => {
-								console.log(data);
 								return (
 									<HomeContentCard
 										key={`ProjectCard${index}`}

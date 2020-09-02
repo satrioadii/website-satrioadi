@@ -24,7 +24,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const styles = makeStyles((theme) => {
 	return {
 		customShadow: {
-			boxShadow: "0px 0px 30px 0px rgba(240,240,240,0.8)",
+			boxShadow: "0px 0px 30px 0px rgba(230,230,230,0.8)",
+		},
+		backdropClass: {
+			backgroundColor: "rgba(250,250,250,0.6)",
 		},
 	};
 });
@@ -41,7 +44,9 @@ const GlobalDialog = () => {
 	return (
 		<Fragment>
 			<Dialog
-				BackdropProps={{ style: { backgroundColor: "rgba(250,250,250,0.6)" } }}
+				BackdropProps={{
+					className: classes.backdropClass,
+				}}
 				PaperProps={{ className: classes.customShadow }}
 				open={isOpen}
 				onClose={() => onCloseDialog()}

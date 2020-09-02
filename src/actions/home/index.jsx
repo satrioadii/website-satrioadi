@@ -13,8 +13,6 @@ const BASE_URL_PROJECT = `${process.env.NEXT_PUBLIC_HOST_API}/${process.env.NEXT
 export const FetchAllProject = async (dispatch) => {
 	dispatch.landingPage({ type: FETCH_LANDING_DATA_REQUEST });
 
-	console.log("FETCH");
-
 	try {
 		const response = await axios({
 			method: "get",

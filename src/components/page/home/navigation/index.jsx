@@ -1,6 +1,6 @@
-import theme from "../../../../theme";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ProjectContents } from "../../../../contents/projects";
+import { LandingPageContextState } from "../../../../providers/landingpage";
 
 const { Fragment } = require("react");
 const { useTheme, Box, Typography, Link } = require("@material-ui/core");
@@ -45,15 +45,14 @@ const Navigator = ({ selected, command, total, title, condition }) => {
 
 const HomeNavigation = () => {
 	const theme = useTheme();
-	const [totalProject, setTotalProject] = useState(0);
+	const state = {
+		landingPage: useContext(LandingPageContextState),
+	};
+	const { count } = state.landingPage;
 	const [navigation, setNavigation] = useState(1);
 	const NavigationHandler = (value) => {
 		setNavigation(value);
 	};
-
-	useEffect(() => {
-		setTotalProject(ProjectContents.length);
-	}, []);
 
 	return (
 		<Fragment>
@@ -75,7 +74,7 @@ const HomeNavigation = () => {
 					<Navigator
 						selected={navigation}
 						command={(number) => NavigationHandler(number)}
-						total={totalProject}
+						total={count}
 						title="projects"
 						condition={1}
 					/>
