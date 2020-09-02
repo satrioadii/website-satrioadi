@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-import { ProjectContents } from "../../../../contents/projects";
+import { useContext, useState } from "react";
 import { LandingPageContextState } from "../../../../providers/landingpage";
 
 const { Fragment } = require("react");
