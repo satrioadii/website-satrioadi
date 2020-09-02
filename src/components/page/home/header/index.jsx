@@ -9,12 +9,7 @@ import {
 import React, { Fragment } from "react";
 import HighLightComponent from "./highlight";
 
-const styles = makeStyles((theme) => {
-	return {};
-});
-
 const HomeHeader = () => {
-	const classes = styles();
 	const theme = useTheme();
 	return (
 		<Fragment>
@@ -26,7 +21,7 @@ const HomeHeader = () => {
 							width: "80px",
 							height: "80px",
 							borderRadius: "40px",
-							backgroundImage: "url('./img-home/ava-satrio.webp')",
+							backgroundImage: "url('/img-home/ava-satrio.webp')",
 							backgroundPosition: "center",
 							backgroundSize: "contain",
 							backgroundColor: "#ffffff00",

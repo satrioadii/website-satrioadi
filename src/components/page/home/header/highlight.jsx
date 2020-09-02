@@ -7,7 +7,7 @@ const HighLightComponent = (props) => {
 				margin: "0 auto",
 				borderRadius: "16px",
 				backgroundColor: "#C3C8D8",
-				backgroundImage: "url('./img-organization/logo-satrioadi.webp')",
+				backgroundImage: "url('/img-organization/logo-satrioadi.webp')",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}
